@@ -33,9 +33,7 @@
 </head>
 <body>
     <div id="title"> <h2 class="p-1">Raleigh Park Experiences Lookup</h2></div>
-    <div id="mapid">
-        
-    </div>
+    <div id="mapid"></div>
 
     <div class="form-group row">
 
@@ -209,22 +207,6 @@ $(function(){
     });
 
 
-function filter() {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById("filter");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("button-container");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-
-        }
-    }
-}
 
 $('#button-container').on('click','a', function(){
 
@@ -250,6 +232,22 @@ $('#button-container').on('click','a', function(){
 
 $('#draggable').draggable();
 })
+
+function filter() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("filter");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("button-container");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
 </script>
 
 </body>
