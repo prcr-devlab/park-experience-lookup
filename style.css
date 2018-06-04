@@ -1,0 +1,129 @@
+html {
+    overflow: hidden;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+::-webkit-scrollbar-thumb {
+    background: royalblue;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #mapid {
+    height: 100%;
+    width: 100%;
+}
+
+#title {
+    box-sizing: border-box;
+    position: fixed;
+    background-color: 	rgba(0, 0, 0, 0.8);
+    border: white 2pt solid;
+    box-shadow: 5px 5px 2px slategray;
+    font-family: 'Bevan', cursive;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    letter-spacing: 3px;
+    color: white;
+    text-align: center;
+    height: auto;    
+    width: auto;
+    padding: 10pt;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 9999;
+    border-radius: 25px;
+}
+
+#button-container {
+    position: fixed;
+    bottom: 60px;
+    left: 20px;
+    height: 40%;
+    width: 350px;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+    border: white solid 2pt;
+    padding: 0;
+    border-radius: 25px;
+}
+
+#filter {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    overflow-y: auto;
+    width: 350px;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: yellow;
+}
+
+li {
+    list-style-type: none;
+}
+
+.table-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(150, 150, 150);
+    border: white solid 2pt;
+    border-radius: 25px;
+    /* height: 100%; */
+    width: 650px;
+}
+
+h3 {
+    color: white;
+}
+
+@keyframes bounceInDown {
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -3000px, 0);
+    }
+  
+    60% {
+      opacity: 1;
+      transform: translate3d(0, 25px, 0);
+    }
+  
+    75% {
+      transform: translate3d(0, -10px, 0);
+    }
+  
+    90% {
+      transform: translate3d(0, 5px, 0);
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .bounceInDown {
+    animation-name: bounceInDown;
+  }
