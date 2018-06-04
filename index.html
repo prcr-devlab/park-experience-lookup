@@ -106,22 +106,23 @@
     </div>
             
 <script>
+// Wait for jQuery to load
 $(function(){
 
-
+    // Marker for geocoder result
     const myIcon = L.icon({
         iconUrl: 'geocode.png'
     });
 
+    // Marker for parks
     const parkMarker = L.icon({
         iconUrl: 'marker.png'
     });
     
-
+    // Set inital map extent
     var mymap = L.map('mapid').setView([35.7877435, -78.644257], 13);
    
-         
-
+   // Call mapbox basemap using leaflet
     L.tileLayer('https://api.mapbox.com/styles/v1/rmerino/cji0dx4o40cn02rr0p17ndlbd/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoicm1lcmlubyIsImEiOiJjamZpOHFzaGQwM2p5MzNtcXI5c251a2dlIn0.XRFhUVODMYz4Js_gIkO31g', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Developed by <a href="https://github.com/merinogeospatial">Richard Merino</a> ',
     maxZoom: 23,
@@ -129,11 +130,14 @@ $(function(){
     accessToken: 'your.mapbox.access.token'
     }).addTo(mymap);
 
+    // Add Geocoder
     var searchControl = L.esri.Geocoding.geosearch().addTo(mymap);
-
     var results = L.layerGroup().addTo(mymap);
 
+    // Create function to be called when ESRI layer is loaded
+    // Dynamically creates node and attributes values to be referenced later
     var onEachFeature = function(feature, layer) {
+
         // Put jQuery function here to tie buttons to div
         newLink = $('<a>');
         newLink.text(layer.feature.properties.NAME)
@@ -181,10 +185,10 @@ $(function(){
         newUL = $('<li>');
         newUL.append(newLink);    
        $('#button-container').append(newUL);
-
     //    console.log(layer.feature);
     }
 
+    // Add layer from ESRI with custom markers
     var parks = L.esri.featureLayer({
     url:"https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/ParksByExperiences/FeatureServer/0?token=dblfZriEdYILXMQiN-6EVMFXYNDLRddsqF-nas5Rzb_UquTD8rN1EUbckZZf4rlapOIqDeIViSKD2ORElxD_2UCQXdButaEXGiGvUjkZiU3-mXfAQuvhJrNk8peoB_CYs3U-S0LZeNGF8SDwqTPp9LxiX3SYlb_o7CXxjSdvu6hfHHjET24bmuCbI3YHPd59uEMBnFcopiEKfI3TCaFQ1ZGoQACjlkSl7srQcASKUrqxoNiMA6lLv64NFTxA6rGUzM2JcSt4UidGjKN_SdZrww..",
     onEachFeature: onEachFeature,
@@ -195,10 +199,12 @@ $(function(){
     },
     }).addTo(mymap);
 
+    // Create popups for markers
     var popups = parks.bindPopup(function (layer) {
         return L.Util.template('<h4><strong>{NAME}</strong></h4><p>Amenities at location: {ALL_AMENITIES}</p><p><strong>{ADDRESS}</p><p><a href="{URL}" target="_blank">Website</a></p>', layer.feature.properties);
     });
 
+    // Geocoder: adds marker at result
     searchControl.on("results", function(data) {
         results.clearLayers();
         for (var i = data.results.length - 1; i >= 0; i--) {
@@ -207,32 +213,40 @@ $(function(){
     });
 
 
-
+// When clicking a link from the list...
 $('#button-container').on('click','a', function(){
 
+    // Go to extent of whichever park was clicked
     mymap.setView([$(this).attr('lat'),$(this).attr('long')],18);
 
+    // Set name to park name in table
     $('#selected-park').text($(this).attr('name'));
 
+    // Iterate through attributes of node that was clicked
+    // Take out name and value that was previously dynamically assigned and store for use
+    // Use value as checker for the condition "Yes" and change to green, use name to target on table as it matches ID
     $(this).each(function() {
         $.each(this.attributes, function(i, attrib){
-        let name = attrib.name;
-        let value = attrib.value;
-        console.log(name + " | " + value);
+            let name = attrib.name;
+            let value = attrib.value;
+            // console.log(name + " | " + value);
 
-        nameID = "#" + name;    
-        $(nameID).css("background-color", "transparent").css("color", "rgb(150, 150, 150)");    
-        if (value === 'Yes') {
-            $(nameID).css("background-color", "green").css("color", "white");
-        }
+            nameID = "#" + name;    
+            $(nameID).css("background-color", "transparent").css("color", "rgb(150, 150, 150)");    
+            if (value === 'Yes') {
+                $(nameID).css("background-color", "green").css("color", "white");
+            }
+            });
         });
-    });
 
 })
 
+// Make div draggable - pseudo resizing as fixed to bottom right corner
 $('#draggable').draggable();
 })
 
+// Vanilla JS that needs to fire before on ready to work properly
+// Dynamically filter list as typing
 function filter() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("filter");
