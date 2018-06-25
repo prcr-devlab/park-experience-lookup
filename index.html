@@ -190,11 +190,7 @@ $(function(){
 
     // Add layer from ESRI with custom markers
     var parks = L.esri.featureLayer({
-<<<<<<< HEAD
     url:"https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/ParksByExperiences/FeatureServer/0?token=aOzlvPsAUNcz8yD_tXEztG--wKiiTFYheopff0jUivuHnASH89b72mM1_WOP6ibLwiEE2dn11pjv5X504n8xpsrt7htAnLzod-HGm49V_J7JQS8UAEmQjUGPAWd-Ob7EQI4B7mShbMslUIlNNqDC33WyDy0aBPYcXic3d9LOZ1crAr3R9l9faFpQ3IVazmgPrfGwQP_WDY580rC6m7ncjXD05CYVea1fYxxRlrQ8TcvkaMB3LMTs2LyM4U9S1rKrG6WZio4_BwIFNnyos2hvFw..",
-=======
-    url:"https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/ParksByExperiences/FeatureServer/0?token=FCi_37VH8nooNW-Gv0LSFa9nAgga8Q88hDRDUWqrBPGAedpAyjjOQMlt2VNIXzLqQqe7R1bxRKYwfWh1i8jQKxYUccvQtXfeY5A5kIkUVx4hWQDAbhs6yGbTBTuch41jEjDQd1nZZONF2NWNPrNkpqdsb-yqJkjunSn-ZEAdloSQo5THr3VO597HWv-9MNnAnOq1yiQbpAdzDhyN3GAknyb7MiKrY_a1wC55BIfqAoKXEb0eqGbDPTZcM2pPTbjN4xJT5ymuZEnSIoKKPfjyTQ..",
->>>>>>> e99a72a0bf53380f149f557b5a217125d6ce0086
     onEachFeature: onEachFeature,
     pointToLayer: function (geojson, latlng) {
       return L.marker(latlng, {
