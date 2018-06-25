@@ -3,11 +3,11 @@ html {
     overflow-x: hidden;
 }
 ::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
+    width: 6px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
 }
 ::-webkit-scrollbar-thumb {
-    background: royalblue;
+    background: white;
 }
 
 body {
@@ -51,7 +51,6 @@ html, body, #mapid {
     overflow-y: auto;
     border: white solid 2pt;
     padding: 0;
-    border-radius: 25px;
 }
 
 #filter {
@@ -75,55 +74,29 @@ li {
     list-style-type: none;
 }
 
-.table-container {
+/* #dragbox {
     position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+} */
+
+.table-container {
+    position: absolute;
     bottom: 20px;
     right: 20px;
-    z-index: 999;
+    z-index: 9999;
     background-color: rgba(0, 0, 0, 0.8);
     color: rgb(150, 150, 150);
     border: white solid 2pt;
-    border-radius: 25px;
+    /* border-radius: 25px; */
     /* height: 100%; */
-    width: 650px;
+    width: auto;
+    /* resize: both; */
+    overflow: auto;
 }
 
 h3 {
     color: white;
 }
 
-@keyframes bounceInDown {
-    from,
-    60%,
-    75%,
-    90%,
-    to {
-      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-  
-    0% {
-      opacity: 0;
-      transform: translate3d(0, -3000px, 0);
-    }
-  
-    60% {
-      opacity: 1;
-      transform: translate3d(0, 25px, 0);
-    }
-  
-    75% {
-      transform: translate3d(0, -10px, 0);
-    }
-  
-    90% {
-      transform: translate3d(0, 5px, 0);
-    }
-  
-    to {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  
-  .bounceInDown {
-    animation-name: bounceInDown;
-  }
