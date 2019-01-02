@@ -122,12 +122,11 @@ $(function(){
     // Set inital map extent
     var mymap = L.map('mapid').setView([35.7877435, -78.644257], 13);
    
-   // Call mapbox basemap using leaflet
-    L.tileLayer('https://api.mapbox.com/styles/v1/rmerino/cji0dx4o40cn02rr0p17ndlbd/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoicm1lcmlubyIsImEiOiJjamZpOHFzaGQwM2p5MzNtcXI5c251a2dlIn0.XRFhUVODMYz4Js_gIkO31g', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Developed by <a href="https://github.com/merinogeospatial">Richard Merino</a> ',
-    maxZoom: 23,
-    id: 'mapbox.streets',
-    accessToken: 'your.mapbox.access.token'
+   // Call CARTO Voyager
+   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	    subdomains: 'abcd',
+	    maxZoom: 19
     }).addTo(mymap);
 
     // Add Geocoder
