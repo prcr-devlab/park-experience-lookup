@@ -189,7 +189,7 @@ $(function(){
 
     // Add layer from ESRI with custom markers
     var parks = L.esri.featureLayer({
-    url:"https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/ParksByExperiences/FeatureServer/0?token=9urjUDEQeONeHeda8vMd8XqBh9C9B-UHlwbDHXmQfCO5NtffUSf7W45J8ZrAFrKhEanOhFrykHehEEOsgoAJMiD-ALvXc3D2CmEtLNN_0hTtem1BbHHWHgbXtiR684-BPWcYJQDMsaw-zukw8NoVu1SgYPJG5rF6ymu3kyiWgxOK6LZvn0KQIvGF-6LPJM7W0jIWJrmnmkhd73sIxxKtotEw7HGLYd_ArnQk_ziQlNtxmddsltwNJv3f4jPsXdqY2j1ShMFA0_k4KFhk415oew..",
+    url:"https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/ParksByExperiences/FeatureServer/0",
     onEachFeature: onEachFeature,
     pointToLayer: function (geojson, latlng) {
       return L.marker(latlng, {
